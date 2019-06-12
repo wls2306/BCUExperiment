@@ -139,7 +139,12 @@
                             stopSubmit(row.workId);
                     }
                 })
-            }
+            },
+
+        "click .judge":function (index,value,row) {
+            window.parent.location.href='demo?userId=${user.userId}&password=${user.userPwd}&reportGoal='+row.workId
+
+        }
     }
 
 
@@ -198,6 +203,7 @@
     {
         return [
             '<button id="change" type="button" class="btn btn-primary change">修改项目</button>',
+            '<button id="judge" type="button" class="btn btn-primary judge">综合评价</button>',
             '<button id="see" type="button" class="btn btn-info see">查看提交状态</button>',
             '<button id="end" type="button" class="btn btn-danger end">截止提交</button>',
         ].join('');
@@ -243,7 +249,14 @@
         "click .seeScore":function (index,value,row) {
             //   alert(row.workId)
             window.location.replace("score?type=3&workId="+row.workId);
+        },
+
+        "click .judge":function (index,value,row) {
+            window.parent.location.href='demo?userId=${user.userId}&password=${user.userPwd}&reportGoal='+row.workId
+
         }
+
+
 
 
     }
@@ -305,9 +318,10 @@
     {
         return [
             '<button id="score" type="button" class="btn btn-primary score">前往评分</button>',
+            '<button id="judge" type="button" class="btn btn-primary judge">综合评价</button>',
             '<button id="publish" type="button" class="btn btn-primary publish">公布分数</button>',
-            '<button id="seeScore" type="button" class="btn btn-primary seeScore">查看评分表</button>',
-            '<button id="download" type="button" class="btn btn-primary download">下载得分表</button>'
+            '<button id="seeScore" type="button" class="btn btn-primary seeScore">查看评分</button>',
+            '<button id="download" type="button" class="btn btn-primary download">下载得分</button>'
         ].join('');
 
     }
@@ -406,7 +420,9 @@
         }
         )
     }
-
+    function dojudge(id) {
+        window.parent.location.href='demo?userId=${user.userId}&password=${user.userPwd}&reportGoal='+id;
+    }
 
 
 </script>

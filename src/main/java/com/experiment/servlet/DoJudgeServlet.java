@@ -25,40 +25,24 @@ public class DoJudgeServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=UTF8");
         PrintWriter out=resp.getWriter();
-
         String username=req.getParameter("userId");
         String password=req.getParameter("password");
-   /*     String name=req.getParameter("name");//学生姓名
-        String type=req.getParameter("type");// 教师为1 学生为2 专家为3*/
-
         String workId=req.getParameter("reportGoal");
         Work w=new WorkDao().getWorkById(workId);
-     /*   String projectType=w.getWorkType().equals("1")?"1A":"1B";
-        String userClass=w.getWorkTarget().substring(0,w.getWorkTarget().indexOf("("));
-        String projectName=w.getWorkName();
-        String projectNum=w.getWorkId();
-        String projectTeacher=w.getWorkInitiator();*/
-
-        String urlPath="http://192.168.1.105:8080";
+             String urlPath="http://192.168.43.94:8080";
         String url1="/middleServlet?way=userLogin&username="+username+"&password="+password+"&projectNum="+workId;
         resp.sendRedirect(urlPath+url1);
     }
 
-
-
     public String get(String url){
-        //ʵ����httpclient
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        //ʵ����get����
         HttpGet httpget = new HttpGet(url);
-        //������
         CloseableHttpResponse response = null;
         String content ="";
         try {
             response = httpclient.execute(httpget);
             if(response.getStatusLine().getStatusCode()==200){
                 content = EntityUtils.toString(response.getEntity(),"utf-8");
-//                System.out.println(content);
             }
         } catch (ClientProtocolException e) {
             e.printStackTrace();

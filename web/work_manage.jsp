@@ -59,7 +59,13 @@
         "click .seeScore":function (index,value,row) {
          //   alert(row.workId)
             window.location.replace("score?type=3&workId="+row.workId);
+        },
+        "click .judge":function (index,value,row) {
+            window.parent.location.href='demo?userId=${user.userId}&password=${user.userPwd}&reportGoal='+row.workId
+
         }
+
+
     }
 
 
@@ -118,7 +124,9 @@
 
     function addFunctionAlty(value,row,index)
     {
+
         return [
+            '<button id="judge" type="button" class="btn btn-info judge">综合评价</button>',
             '<button id="seeScore" type="button" class="btn btn-info seeScore">查看成绩报告单</button>',
         ].join('');
 
