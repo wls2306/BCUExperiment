@@ -29,7 +29,7 @@ public class DoJudgeServlet extends HttpServlet {
         String password=req.getParameter("password");
         String workId=req.getParameter("reportGoal");
         Work w=new WorkDao().getWorkById(workId);
-             String urlPath="http://192.168.43.94:8080";
+             String urlPath="https://www.2306.tech/grade";
         String url1="/middleServlet?way=userLogin&username="+username+"&password="+password+"&projectNum="+workId;
         resp.sendRedirect(urlPath+url1);
     }
